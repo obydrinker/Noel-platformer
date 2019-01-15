@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySawMovement : MonoBehaviour
 {
+    //Floats är variabler som anges i siffror och till skillnad från int går en float att använda om man vill ha decimaltal.
+    //Float går att använda till t ex. deta tillfälle där du vill sätta en hastighet i t ex. en rotation.
     private float rotationspeed = 180;
 
     private void Update()
