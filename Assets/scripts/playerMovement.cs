@@ -24,6 +24,13 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        PlayerMovement();
+        
+
+    }
+    void PlayerMovement()
+    {
         //sätter hastigheten (åt höger och vänster) för spelaren.
         rbody.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rbody.velocity.y);
 
@@ -38,7 +45,17 @@ public class playerMovement : MonoBehaviour
                 rbody.velocity = new Vector2(rbody.velocity.x, jumpSpeed);
             }
         }
-
-
     }
+
+    //När objektet med scriptet kolliderar...
+     private void OnTriggerStay2D(Collider2D collision)
+    {
+        //om objektet som (objektet med scriptet kolliderar med) har tagen Ladder sker...
+        if (collision.tag == "Ladder")
+        {
+            //Att objektet med scriptet (i detta fallet "player") kan objektet röra sig "vertical" (upp och ner) då sätts en hastighet beroende på varibeln "moveSpeed".
+            rbody.velocity = new Vector2(Input.GetAxis("Vertical") * moveSpeed, rbody.velocity.x);
+        }
+    }
+
 }

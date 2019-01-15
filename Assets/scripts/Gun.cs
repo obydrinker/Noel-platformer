@@ -57,13 +57,17 @@ public class Gun : MonoBehaviour
         {
             //Skapar en ny bullet vid den satta spwnpointen
             GameObject newbullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
+            //Om skalan (localScale) är större än 0 sker...
             if (transform.localScale.x > 0)
             {
+                //Jag kommer åt bulletens rigidbody velocity och kan sätta en hasighet åt höger beroende av variabeln bulletspeed 
             newbullet.GetComponent<Rigidbody2D>().velocity = (newbullet.transform.right * bulletSpeed);
 
             }
+            //Om skalan (localScale) är mindre än 0 sker istället...
             else if ( transform.localScale.x < 0)
             {
+                //samma sak fast åt vänster med en hastighet beroende på bulletSpeed variabeln
                 newbullet.GetComponent<Rigidbody2D>().velocity = (-newbullet.transform.right * bulletSpeed);
             }
 
